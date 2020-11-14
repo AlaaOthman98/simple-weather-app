@@ -99,12 +99,16 @@ export default {
       }
     },
     async saveWeatherData() {
-      await SaveDataService.saveWeatherData({
+      const res = await SaveDataService.saveWeatherData({
         location: this.location,
         temperature: this.temperature,
         feelsLike: this.feelsLike,
         weatherDescription: this.weatherDescription
       });
+
+      if (res.status === 201) {
+        alert("Wow! Data Saved Successfullty");
+      }
     }
   },
   computed: {
